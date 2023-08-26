@@ -5,13 +5,6 @@
 /.pnp
 .pnp.js
 
-.idea
-.idea/
-
-.vscode
-
-/.idea  # .idea is the default directory name used by IntelliJ IDEA
-
 # testing
 /coverage
 
