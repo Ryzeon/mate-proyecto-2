@@ -1,0 +1,19 @@
+header{  
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header__container {
+    padding: 2rem;
+}
+
+.header__content {
+    padding: 0 2rem 2rem;
+    text-align: center;
+}
+
+.header__buttons {
+    gap: 2rem;
+}

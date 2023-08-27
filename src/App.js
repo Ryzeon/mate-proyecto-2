@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Header from "./Components/Header/Header";
 
-function App() {
+const App = () => {
+
+  const [mssgHeader, setMssg] = useState('Selecciona una opción');
+  const [bttn_rand, setRand] = useState(false);
+  const [bttn_input, setBtnInput] = useState(false);
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header mensaje={mssgHeader} setBtnInput={setBtnInput} setRand={setRand}/>
+      <button onClick={
+        console.log(bttn_rand,bttn_input)
+      }>ga</button>
+    </>
   );
 }
 

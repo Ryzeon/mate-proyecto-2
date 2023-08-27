@@ -1,0 +1,31 @@
+:root {
+    --bg-out: #27374D;
+    --bg-in: #526D82;
+    --text-color: #DDE6ED;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.button {
+    padding: 1rem 1.8rem;
+    border: 1px solid #fff;
+    background-color: var(--bg-in);
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: all 500ms;
+    
+}
+
+.button:hover{
+     transform: scale(1.025);
+     opacity: .95;
+}
