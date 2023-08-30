@@ -10,7 +10,7 @@ const Header = ({mssgHeader, btnSelected, setSelected, active}) => {
 
                 <div className='header__content'>
                     <div>
-                        <h1>Generador de matrices</h1>
+                        <h1>Generador de matrices simétricas</h1>
                         <p>{mssgHeader}</p>
                     </div>
                 </div>
