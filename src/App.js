@@ -67,7 +67,7 @@ const App = () => {
 
 
       {
-        (generate === 1 && numberValid) && <Matrix n={n} random={true}/>
+        ((generate === 1 || generate === 2) && numberValid) && <Matrix n={n} random={matrix}/>
       }
 
 

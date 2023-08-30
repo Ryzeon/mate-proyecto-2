@@ -21,7 +21,7 @@ const Input = ({setN, numberValid, setNumberValid}) => {
     return (
         <div className="input__content flex-row flex-column">
             <label className="label_number" htmlFor="input_number">Número de filas y columnas</label>
-            <input type="number" name="input_number" className="input_number" min="0" onChange={isNumberValid} placeholder="3"></input>
+            <input type="number" name="input_number" className="input_number" min="0" onChange={isNumberValid} placeholder="0"></input>
             {
                 (!numberValid)? <p className="text_error">Ingresa un número positivo menor a 10</p> : <></>
             }

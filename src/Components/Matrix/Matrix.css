@@ -11,3 +11,10 @@
     border: 1px solid var(--bg-in);
     font-weight: bold;
 }
+
+.cell_input {
+    width: 8%;
+    background-color: transparent;
+    outline: none;
+    text-align: center;
+}
