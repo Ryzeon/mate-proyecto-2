@@ -1,0 +1,41 @@
+@import url(../../bases.css);
+
+.input_container {
+    padding: 1rem;
+}
+
+.input__content {
+    padding: 2rem;
+}
+
+.label_number {
+    padding: .5rem;
+    font-size: 1.2rem;
+}
+
+
+.input_number {
+    padding: .2rem 1rem;
+    width: 50%;
+    background-color: var(--bg-in);
+    outline: none;
+    text-align: right;
+    border-radius: .2rem;
+    border: 1px solid var(--text-color);
+}
+
+.input_error {
+    border-color:#FF6969;
+}
+/* Ocultar las flechas en un input de tipo number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.text_error {
+    font-size: .8rem;
+    color: #FF6969;
+    padding: .5rem;
+}

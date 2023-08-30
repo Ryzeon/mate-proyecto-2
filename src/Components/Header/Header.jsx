@@ -19,8 +19,8 @@ const Header = ({mssgHeader, btnSelected, setSelected, active}) => {
                 {
                     (btnSelected === '')? (
                         <div className='header__buttons flex-row'>
-                            <Button mssg='Matriz random' setSelected={setSelected}></Button>
-                            <Button mssg='Ingresar matriz' setSelected={setSelected}></Button>
+                            <Button mssg='Matriz random' setSelected={setSelected} style={{}}></Button>
+                            <Button mssg='Ingresar matriz' setSelected={setSelected} style={{}}></Button>
                         </div>
                     ) : <></>
                 }

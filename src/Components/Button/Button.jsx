@@ -1,9 +1,9 @@
 import React from "react";
 import '../../bases.css'
-const Button = ({mssg, setSelected}) => {
+const Button = ({mssg, setSelected, style}) => {
     const toggleSelected = () => setSelected(mssg);
     return (
-        <div className='button button__random' onClick={toggleSelected}>
+        <div style={style}className='button' onClick={toggleSelected}>
             {mssg}
         </div>
         
