@@ -12,6 +12,7 @@ export const generateRandom = (n) => {
 
     for(let i=0; i<n; ++i) {
         for(let j=0; j<n; ++j) {
+            if(i==j) continue;
             matrix[i][j] = Math.floor(Math.random() * (max_value - min_value + 1)) + min_value;
             matrix[j][i] = matrix[i][j];
         }
