@@ -1,8 +1,12 @@
-header{  
+#header-active {  
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+#header-noactive{
+    animation: slideUp ease-in-out 2s;
 }
 
 .header__container {
@@ -16,4 +20,17 @@ header{
 
 .header__buttons {
     gap: 2rem;
+}
+
+
+@keyframes slideUp {
+    0% {
+        height: 95vh;
+    }
+    50% {
+        height: 30vh;
+    }
+    100% {
+        height: auto;
+    }
 }

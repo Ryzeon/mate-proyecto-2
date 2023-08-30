@@ -1,22 +1,42 @@
-import { useState } from "react";
+import { React, useEffect, useState } from "react";
 import Header from "./Components/Header/Header";
 
 const App = () => {
 
   const [mssgHeader, setMssg] = useState('Selecciona una opción');
-  const [bttn_rand, setRand] = useState(false);
-  const [bttn_input, setBtnInput] = useState(false);
+  const [btnSelected, setSelected] = useState('');
+  const [active, setHeaderActive] = useState('header-active');
+
+  useEffect(()=>{
+    if(btnSelected !== '') {
+      setHeaderActive('header-noactive');
+    }
+
+    if(btnSelected === 'Matriz random') {
+      setMssg('Ingresa el número de filas y columnas');
+    }
+
+    if(btnSelected === 'Ingresar matriz') {
+      console.log('mama');
+    }
+
+  }, [btnSelected]);
 
   
-
   return (
     <>
-      <Header mensaje={mssgHeader} setBtnInput={setBtnInput} setRand={setRand}/>
-      <button onClick={
-        console.log(bttn_rand,bttn_input)
-      }>ga</button>
+      <Header 
+        mssgHeader={mssgHeader} 
+        setSelected={setSelected}
+        active={active} 
+        />
     </>
   );
 }
+
+
+
+
+
 
 export default App;
