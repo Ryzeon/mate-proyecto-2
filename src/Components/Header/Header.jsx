@@ -2,7 +2,7 @@ import Button from '../Button/Button'
 import './Header.css'
 import '../../bases.css'
 
-const Header = ({mssgHeader, setSelected, active}) => {
+const Header = ({mssgHeader, btnSelected, setSelected, active}) => {
 
     return(
         <header className='flex-row flex-column' id={active}>
@@ -15,10 +15,16 @@ const Header = ({mssgHeader, setSelected, active}) => {
                     </div>
                 </div>
 
-                <div className='header__buttons flex-row'>
-                    <Button mssg='Matriz random' setSelected={setSelected}></Button>
-                    <Button mssg='Ingresar matriz' setSelected={setSelected}></Button>
-                </div>
+
+                {
+                    (btnSelected === '')? (
+                        <div className='header__buttons flex-row'>
+                            <Button mssg='Matriz random' setSelected={setSelected}></Button>
+                            <Button mssg='Ingresar matriz' setSelected={setSelected}></Button>
+                        </div>
+                    ) : <></>
+                }
+                
 
                
             </div>

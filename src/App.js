@@ -17,6 +17,7 @@ const App = () => {
     }
 
     if(btnSelected === 'Ingresar matriz') {
+      setMssg('Ingresa el número de filas y columnas');
       console.log('mama');
     }
 
@@ -26,7 +27,8 @@ const App = () => {
   return (
     <>
       <Header 
-        mssgHeader={mssgHeader} 
+        mssgHeader={mssgHeader}
+        btnSelected={btnSelected} 
         setSelected={setSelected}
         active={active} 
         />
