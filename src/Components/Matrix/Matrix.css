@@ -1,0 +1,13 @@
+@import url(../../bases.css);
+
+.matrix_container{
+    padding: 2rem 0;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.cell {
+    padding: 2rem;
+    border: 1px solid var(--bg-in);
+    font-weight: bold;
+}
