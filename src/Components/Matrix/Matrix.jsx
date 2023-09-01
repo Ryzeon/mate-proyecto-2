@@ -3,13 +3,12 @@ import { generateRandom, matrixInput } from "../../matrix_functions/matrix";
 import './Matrix.css';
 import { validateMatrix, validateNumber } from "../../validations/input";
 
-const cellCompleted = (n, matrix_input, setMatrixInput, countFilled, setCountFilled) => {
+const cellCompleted = (matrix_input, setMatrixInput, countFilled, setCountFilled) => {
     const inputs = document.querySelectorAll('.cell_input');
     inputs.forEach((input) => {
         let newMatrix = [...matrix_input];
         if(!validateNumber(input.value)) {
             input.value = '';
-            // arreglar validacion del contador > n!???
             newMatrix[parseInt(input.id[0])][parseInt(input.id[1])] = 0;
         }
         else {
@@ -24,7 +23,7 @@ const cellCompleted = (n, matrix_input, setMatrixInput, countFilled, setCountFil
 
 function generateCells(n, random, matrix_rand, matrix_input, setMatrixInput, countFilled, setCountFilled) {
     const handleCell = () => {
-        cellCompleted(n, matrix_input, setMatrixInput, countFilled, setCountFilled)
+        cellCompleted(matrix_input, setMatrixInput, countFilled, setCountFilled)
     }
 
     const matrix_front = [];
@@ -77,7 +76,17 @@ const Matrix = ({n, random}) => {
                 (countFilled >= n*n && !random && !validateMatrix(n, matrix_input)) && 
                 <div className="matrix__error">
                     <p>La matriz ingresada no es simétrica</p>
+                    {
+                        document.querySelectorAll('.cell_input').
+                            forEach( input => input.style.border = '1px solid var(--error-color)' )
+                    }
                 </div>
+            }
+
+            {
+                (countFilled >= n*n && !random && validateMatrix(n, matrix_input)) &&
+                    document.querySelectorAll('.cell_input').
+                        forEach( input => input.style.border = '1px solid var(--bg-in)' )
             }
         </div>
 
