@@ -60,6 +60,7 @@ const Matrix = ({n, random}) => {
     const matrix_rand = generateRandom(n);
     
     useEffect(()=> {
+        //
         console.log(countFilled);
         console.log(matrix_input);
     }, [countFilled]);
@@ -73,7 +74,10 @@ const Matrix = ({n, random}) => {
             </div>
 
             {
-                (countFilled === n*n) && <button>Calcular</button>
+                (countFilled >= n*n && !random && !validateMatrix(n, matrix_input)) && 
+                <div className="matrix__error">
+                    <p>La matriz ingresada no es simétrica</p>
+                </div>
             }
         </div>
 

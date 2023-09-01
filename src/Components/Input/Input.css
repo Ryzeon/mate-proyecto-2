@@ -25,7 +25,7 @@
 }
 
 .input_error {
-    border-color:#FF6969;
+    border-color: var(--error-color);
 }
 /* Ocultar las flechas en un input de tipo number */
 input[type="number"]::-webkit-inner-spin-button,
@@ -36,6 +36,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .text_error {
     font-size: .8rem;
-    color: #FF6969;
+    color: var(--error-color);
     padding: .5rem;
 }

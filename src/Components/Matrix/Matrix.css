@@ -20,3 +20,11 @@
     text-align: center;
     color: var(--text-color);
 }
+
+.matrix__error p {
+    color: var(--error-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem 0;
+}

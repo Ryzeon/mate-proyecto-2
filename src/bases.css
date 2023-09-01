@@ -2,6 +2,7 @@
     --bg-out: #27374D;
     --bg-in: #526D82;
     --text-color: #DDE6ED;
+    --error-color: #FF6969;
 }
 
 .flex-row {
