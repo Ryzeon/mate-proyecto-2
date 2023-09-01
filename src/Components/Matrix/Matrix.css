@@ -13,8 +13,10 @@
 }
 
 .cell_input {
-    width: 8%;
+    width: 75px;
+    height: 87px;
     background-color: transparent;
     outline: none;
     text-align: center;
+    color: var(--text-color);
 }

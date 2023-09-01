@@ -1,34 +1,49 @@
-import React from "react";
-import { generateRandom, matrixInput } from "../../matrix_functions/matrix_random";
+import React, { useEffect, useState } from "react";
+import { generateRandom, matrixInput } from "../../matrix_functions/matrix";
 import './Matrix.css';
-import { validateNumber } from "../../validations/input";
+import { validateMatrix, validateNumber } from "../../validations/input";
 
-const cellCompleted = () => {
+const cellCompleted = (n, matrix_input, setMatrixInput, countFilled, setCountFilled) => {
     const inputs = document.querySelectorAll('.cell_input');
     inputs.forEach((input) => {
-        if(!validateNumber(input.value)) input.value = '';
+        let newMatrix = [...matrix_input];
+        if(!validateNumber(input.value)) {
+            input.value = '';
+            // arreglar validacion del contador > n!???
+            newMatrix[parseInt(input.id[0])][parseInt(input.id[1])] = 0;
+        }
+        else {
+            setCountFilled(countFilled+1);
+            newMatrix[parseInt(input.id[0])][parseInt(input.id[1])] = parseInt(input.value);
+        }
+        setMatrixInput(newMatrix);    
+
     });
     
 }
 
-function generateCells(n, random) {
+function generateCells(n, random, matrix_rand, matrix_input, setMatrixInput, countFilled, setCountFilled) {
+    const handleCell = () => {
+        cellCompleted(n, matrix_input, setMatrixInput, countFilled, setCountFilled)
+    }
 
-    const matrix = ((random)? generateRandom(n) : matrixInput(n)); 
     const matrix_front = [];
+
   
     for (let i = 0; i < n; ++i) {
         const row = [];
         for(let j = 0; j < n; ++j) {
             row.push(
                 (random)?
-                    <div key={j} className="cell">{matrix[i][j]}</div>
+                    <div key={j} className="cell">{matrix_rand[i][j]}</div>
                     :
                     <input 
                         key={j}
+                        id={i+""+j}
                         className="cell cell_input"
                         type="number"
                         placeholder="0"
-                        onChange={cellCompleted}
+                        onChange={handleCell}
                     />
             );
         }
@@ -39,14 +54,30 @@ function generateCells(n, random) {
 }
 
 const Matrix = ({n, random}) => {
+    
+    const [countFilled, setCountFilled] = useState(0);
+    const [matrix_input, setMatrixInput] = useState(matrixInput(n));
+    const matrix_rand = generateRandom(n);
+    
+    useEffect(()=> {
+        console.log(countFilled);
+        console.log(matrix_input);
+    }, [countFilled]);
+
     return (
         <div className="matrix_container">
             <div className="matrix__content">
                 {
-                    generateCells(n, random)
+                    generateCells(n, random, matrix_rand, matrix_input, setMatrixInput, countFilled, setCountFilled)
                 }
             </div>
+
+            {
+                (countFilled === n*n) && <button>Calcular</button>
+            }
         </div>
+
+        
     )
 }
 
