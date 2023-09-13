@@ -1,0 +1,10 @@
+@import url(../../bases.css);
+
+.graph_container {
+    padding: 2rem 0;
+    width: 90%;
+    /* POner el height lo resto que queda de pagina mas un 20%*/
+    height: calc(100vh - 50vh);
+    margin: 0 auto;
+    border: 1px solid var(--bg-in);
+}
