@@ -32,3 +32,13 @@ export const matrixInput = (n) => {
     }
     return matrix
 }
+
+/**
+ *
+ * @param matrix as simetric matriz
+ * @param n -> size of matrix
+ * @param start -> start node
+ */
+export const dijkstra = (matrix, n, start) => {
+
+}
