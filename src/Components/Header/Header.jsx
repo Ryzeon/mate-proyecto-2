@@ -2,9 +2,18 @@ import Button from '../Button/Button'
 import './Header.css'
 import '../../bases.css'
 
-const Header = ({mssgHeader, btnSelected, setSelected, active}) => {
+/**
+ *
+ * @param mssgHeader
+ * @param btnSelected
+ * @param setSelected
+ * @param active
+ * @returns {JSX.Element}
+ * @constructor
+ */
+const Header = ({mssgHeader, btnSelected, setSelected, active}) => { // El componente Header recibe un mensaje, el botón seleccionado, la función para seleccionar el botón y el estado activo
 
-    return(
+    return (
         <header className='flex-row flex-column' id={active}>
             <div className='header__container'>
 
@@ -17,16 +26,15 @@ const Header = ({mssgHeader, btnSelected, setSelected, active}) => {
 
 
                 {
-                    (btnSelected === '')? (
+                    (btnSelected === '') ? (
                         <div className='header__buttons flex-row'>
                             <Button mssg='Matriz random' setSelected={setSelected} style={{}}></Button>
                             <Button mssg='Ingresar matriz' setSelected={setSelected} style={{}}></Button>
                         </div>
                     ) : <></>
                 }
-                
 
-               
+
             </div>
         </header>
     )
