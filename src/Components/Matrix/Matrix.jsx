@@ -3,7 +3,7 @@ import {generateRandom, matrixInput} from "../../matrix_functions/matrix";
 import './Matrix.css';
 import {validateMatrix, validateNumber} from "../../validations/input";
 
-const cellCompleted = (matrix_input, setMatrixInput, countFilled, setCountFilled, SetMatrixOutput) => {
+const cellCompleted = (matrix_input, setMatrixInput, countFilled, setCountFilled, SetMatrixOutput, matrixChange) => {
     const inputs = document.querySelectorAll('.cell_input');
     inputs.forEach((input) => {
         let newMatrix = [...matrix_input];
@@ -16,14 +16,16 @@ const cellCompleted = (matrix_input, setMatrixInput, countFilled, setCountFilled
         }
         setMatrixInput(newMatrix);
         SetMatrixOutput(newMatrix);
+        if (validateMatrix(newMatrix.length, newMatrix)) {
+            matrixChange(matrix_input);
+        }
     });
 
 }
 
 function generateCells(n, random, matrix_rand, matrix_input, setMatrixInput, countFilled, setCountFilled, onMatrixChange, SetMatrixOutput) {
     const handleCell = () => {
-        onMatrixChange(matrix_input);
-        cellCompleted(matrix_input, setMatrixInput, countFilled, setCountFilled, SetMatrixOutput)
+        cellCompleted(matrix_input, setMatrixInput, countFilled, setCountFilled, SetMatrixOutput, onMatrixChange)
     }
 
     const matrix_front = [];
@@ -59,6 +61,7 @@ const Matrix = ({n, random, matrixOutput}) => {
 
     useEffect(() => {
         if (random) {
+            console.log("matrixChange event dispatched");
             onMatrixChange(matrix_rand);
         }
     });
@@ -76,6 +79,7 @@ const Matrix = ({n, random, matrixOutput}) => {
     useEffect(() => {
         console.log(countFilled);
         console.log(matrix_input);
+        onMatrixChange(matrix_input)
     }, [countFilled, matrix_input]);
 
     return (

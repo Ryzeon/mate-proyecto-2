@@ -4,6 +4,7 @@ import Input from "./Components/Input/Input";
 import Button from "./Components/Button/Button";
 import Matrix from "./Components/Matrix/Matrix";
 import {Graph} from "./Components/Graph/Graph";
+import FutureCallback from "./validations/callback";
 
 const App = () => {
 
@@ -16,6 +17,13 @@ const App = () => {
     const [generate, setGenerateMatrix] = useState(0); // 0:nada, 1:random, 2:input
     const [matrix, setMatrix] = useState(false); // true: matriz random, false: matriz input
     const [out_matriz, setOut_matriz] = useState([]);
+
+    const futureCallback = new FutureCallback();
+
+    document.addEventListener('matrixChange', (e) => {
+        // if last call was in more than 200 milliseconds ago return
+        futureCallback.handle(e.detail.matrix);
+    });
 
     useEffect(() => {
         if (btnSelected !== '') {
@@ -73,7 +81,7 @@ const App = () => {
 
             }
             {
-                ((generate === 1 || generate === 2) && numberValid) && <Graph size={n} matrix={out_matriz}/>
+                ((generate === 1 || generate === 2) && numberValid) && <Graph size={n} matrix={out_matriz} FutureCallback={futureCallback}/>
             }
 
         </>

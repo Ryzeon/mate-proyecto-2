@@ -2,13 +2,14 @@ import ReactFlow, {
     MiniMap,
     Controls,
     useNodesState,
-    useEdgesState, useReactFlow, Position,
+    useEdgesState, useReactFlow, Position, addEdge,
 } from "reactflow";
 
 import "reactflow/dist/style.css";
 import './Graph.css';
 import {useCallback, useEffect} from "react";
 import dagre from 'dagre';
+import FutureCallback from '../../validations/callback'
 
 const createInitialNodes = (matriz, size) => {
     const nodes = [];
@@ -29,7 +30,8 @@ const createInitialNodes = (matriz, size) => {
             id: i.toString(), data: {label: i + 1}, position: {
                 x: postX,
                 y: postY
-            }
+            },
+            zIndex: 2
         });
     }
     console.log(nodes);
@@ -52,6 +54,7 @@ const createEdges = (matriz, size) => {
                     target: j.toString(),
                     label: matriz[i][j].toString() + "m",
                     animated: true,
+                    zIndex: 1
                 });
                 alreadyConnected.push(i + "-" + j);
             }
@@ -81,7 +84,7 @@ const getLayoutedElements = (nodes, edges) => {
     nodes.forEach((node) => {
         const nodeWithPosition = dagreGraph.node(node.id);
         node.targetPosition = Position.Left
-        node.sourcePosition =  Position.Right
+        node.sourcePosition = Position.Right
 
         // We are shifting the dagre node position (anchor=center center) to the top left
         // so it matches the React Flow node anchor point (top left).
@@ -97,15 +100,16 @@ const getLayoutedElements = (nodes, edges) => {
 };
 
 
-const initialNodes = [
-];
+const initialNodes = [];
 // const initialEdges = [{id: "e1-2", source: "1", target: "2", label: "20m"}];
 const initialEdges = [];
 
 
-export const Graph = ({matrix, size}) => {
+export const Graph = ({matrix, size, FutureCallback}) => {
     const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
     const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+    const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
 
     // useEffect(() => {
     //     const newNodes = createInitialNodes(matrix, size);
@@ -114,23 +118,32 @@ export const Graph = ({matrix, size}) => {
     //     setEdges(newEdges);
     // });
 
+    let lastCalledTimeLong = 0;
 
-    document.addEventListener('matrixChange', (e) => {
+    FutureCallback.onSuccess((matrix) => {
+        if (lastCalledTimeLong && ((lastCalledTimeLong + 200) > Date.now())) {
+            return;
+        }
         console.log("matrixChange event received");
-        const newMatrix = e.detail.matrix;
-        const newNodes = createInitialNodes(newMatrix, size);
-        const newEdges = createEdges(newMatrix, size);
-        let layoutedElements = getLayoutedElements(newNodes, newEdges);
-        setNodes(layoutedElements.nodes);
-        setEdges(layoutedElements.edges);
-        // upd
-
-        console.log("nodes updated }" + size);
+        try {
+            const newMatrix = matrix;
+            console.log(newMatrix.length);
+            const newSize = newMatrix.length;
+            const newNodes = createInitialNodes(newMatrix, newSize);
+            const newEdges = createEdges(newMatrix, newSize);
+            let layoutedElements = getLayoutedElements(newNodes, newEdges);
+            setNodes(layoutedElements.nodes);
+            setEdges(layoutedElements.edges);
+            lastCalledTimeLong = Date.now();
+        } catch (e) {
+            console.log(e);
+        }
     });
     return (
         <div className="graph_container">
             <ReactFlow nodes={nodes} edges={edges}
-                       onNodesChange={onNodesChange} onEdgesChange={onEdgesChange}
+                       onNodesChange={onNodesChange} onEdgesChange={onEdgesChange} defaultZoom={1.5}
+                       onConnect={onConnect} fitView={true}
             >
                 <Controls/>
                 {/*<MiniMap/> */}

@@ -40,7 +40,5 @@ export const matrixInput = (n) => {
  * @param start -> start node
  */
 export const dijkstra = (matrix, n, start) => {
-    // OLA NO SE QUE HAGO CON MI VIDA
-    // PERO ESPERO QUE LA CLASE DE COMPLEJIDAD
-    // ME SALVE LA VIDA :)
+    console.log("ola uwuw test")
 }
