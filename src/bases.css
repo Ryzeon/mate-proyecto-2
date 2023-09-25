@@ -23,7 +23,8 @@
     border-radius: .5rem;
     cursor: pointer;
     transition: all 500ms;
-    
+    width: max-content; 
+    text-align: center;
 }
 
 .button:hover{

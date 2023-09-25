@@ -64,11 +64,14 @@ const App = () => {
                         <div className="flex-row flex-column input__container">
                             <Input setN={setN} numberValid={numberValid} setNumberValid={setNumberValid}></Input>
                         </div>
-                        <Button
-                            mssg="Generar"
-                            setSelected={setSelected}
-                            style={{width: '15%', margin: '0 auto', textAlign: 'center'}}
-                        />
+                        
+                        <div style={{width: 'max-content', margin: '0 auto'}}>
+                            <Button
+                                mssg="Generar"
+                                setSelected={setSelected}
+                            />
+
+                        </div>
                     </section>
 
 

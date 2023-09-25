@@ -22,7 +22,6 @@
     gap: 2rem;
 }
 
-
 @keyframes slideUp {
     0% {
         height: 95vh;
@@ -32,5 +31,11 @@
     }
     100% {
         height: auto;
+    }
+}
+
+@media screen and (max-width: 423px) {
+    .header__buttons {
+        flex-direction: column;
     }
 }

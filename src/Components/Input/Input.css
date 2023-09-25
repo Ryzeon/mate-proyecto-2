@@ -11,6 +11,7 @@
 .label_number {
     padding: .5rem;
     font-size: 1.2rem;
+    text-align: center;
 }
 
 
@@ -38,4 +39,5 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: .8rem;
     color: var(--error-color);
     padding: .5rem;
+    text-align: center;
 }

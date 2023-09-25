@@ -34,7 +34,7 @@ const createInitialNodes = (matriz, size) => {
             zIndex: 2
         });
     }
-    console.log(nodes);
+    //console.log(nodes);
     return nodes;
 }
 const createEdges = (matriz, size) => {
