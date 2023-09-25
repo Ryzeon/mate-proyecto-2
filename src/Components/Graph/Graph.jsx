@@ -140,15 +140,18 @@ export const Graph = ({matrix, size, FutureCallback}) => {
         }
     });
     return (
-        <div className="graph_container">
-            <ReactFlow nodes={nodes} edges={edges}
-                       onNodesChange={onNodesChange} onEdgesChange={onEdgesChange} defaultZoom={1.5}
-                       onConnect={onConnect} fitView={true}
-            >
-                <Controls/>
-                {/*<MiniMap/> */}
-            </ReactFlow>
-        </div>
+        <section className="graph_container">
+            <div className="graph_container__content">
+                <ReactFlow nodes={nodes} edges={edges}
+                        onNodesChange={onNodesChange} onEdgesChange={onEdgesChange} defaultZoom={1.5}
+                        onConnect={onConnect} fitView={true}
+                >
+                    <Controls/>
+                    {/*<MiniMap/> */}
+                </ReactFlow>
+            </div>
+
+        </section>
 
     )
 }

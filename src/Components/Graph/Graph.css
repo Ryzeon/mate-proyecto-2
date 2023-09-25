@@ -1,10 +1,49 @@
 @import url(../../bases.css);
 
 .graph_container {
-    padding: 2rem 0;
+    padding: 2rem 0rem;
+}
+
+.graph_container__content {
+    padding: 2rem;
     width: 90%;
     /* POner el height lo resto que queda de pagina mas un 20%*/
+    /* OASO LA YESI PINGAMEN */
     height: calc(100vh - 50vh);
     margin: 0 auto;
     border: 1px solid var(--bg-in);
+}
+
+.react-flow__node {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.react-flow__edge-path, .react-flow__edge.animated path {
+    stroke: #000;
+    stroke-width: 1.5;
+    stroke-dasharray: none;
+}
+
+.react-flow__edge-textbg {
+    fill: none;
+
+}
+
+.react-flow__edge-text {
+    fill: white;
+    font-size: .8rem;
+}
+
+.react-flow__controls-button, .react-flow__controls-button:hover {
+    background: transparent;
+    border: 1px solid white;
 }
