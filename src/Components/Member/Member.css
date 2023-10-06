@@ -1,0 +1,11 @@
+.member__content-img {
+    width: 250px;
+    border-radius: 50%;
+    border: #fff 2px solid;
+}
+
+@media screen and (max-width: 400px) {
+    .member__content-img {
+        width: 150px;
+    }
+}

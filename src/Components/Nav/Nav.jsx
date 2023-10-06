@@ -11,8 +11,8 @@ const Nav = () => {
     return (
         <>
             <div className="nav__content">
-                <Link to="#" onClick={reload}><RiHome2Line className="nav__content-icon"/></Link>
-                <Link to="/integrantes"><BiUser className="nav__content-icon" id="users"/></Link>
+                <Link to="/mate-proyecto-2"><RiHome2Line className="nav__content-icon"/></Link>
+                <Link to="/mate-proyecto-2/integrantes"><BiUser className="nav__content-icon" id="users"/></Link>
             </div>
 
             <Outlet />
