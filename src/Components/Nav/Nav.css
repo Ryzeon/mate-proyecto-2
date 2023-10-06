@@ -1,0 +1,14 @@
+.nav__content {
+    padding: 2rem;
+    font-size: 1.8rem;
+    position: absolute;
+}
+
+.nav__content-icon {
+    cursor: pointer;
+    margin: 0 .5rem;
+}
+
+.nav__content-icon:hover {
+    transform: scale(1.1);
+}

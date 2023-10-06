@@ -16,7 +16,6 @@ const Header = ({mssgHeader, btnSelected, setSelected, active}) => { // El compo
     return (
         <header className='flex-row flex-column' id={active}>
             <div className='header__container'>
-
                 <div className='header__content'>
                     <div>
                         <h1>Generador de matrices simétricas</h1>
