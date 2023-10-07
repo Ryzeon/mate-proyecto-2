@@ -34,6 +34,7 @@ function generateCells(n, random, matrix_rand, matrix_input, setMatrixInput, cou
     for (let i = 0; i < n; ++i) {
         const row = [];
         for (let j = 0; j < n; ++j) {
+            if(j==0) row.push(<p key={j} style={{paddingRight: '1rem'}}>{i+1}</p>);
             row.push(
                 (random) ?
                     <div key={j} className="cell">{matrix_rand[i][j]}</div>
@@ -52,6 +53,15 @@ function generateCells(n, random, matrix_rand, matrix_input, setMatrixInput, cou
     }
     return matrix_front;
 }
+
+const generateVertix = (n) => {
+    const vertix = [];
+    for (let i = 0; i < n; ++i) {
+        vertix.push(i+1);
+    }
+    return vertix;
+}
+
 
 const Matrix = ({n, random, matrixOutput}) => {
 
@@ -85,6 +95,11 @@ const Matrix = ({n, random, matrixOutput}) => {
     return (
         <div className="matrix_container">
             <div className="matrix__content">
+                <div className="flex-row">
+                    {
+                        generateVertix(n).map((vertix) => <p key={vertix} style={{padding: '0px 1rem 0 3rem'}}>{vertix}</p>)
+                    }
+                </div>
                 {
                     generateCells(n, random, matrix_rand, matrix_input, setMatrixInput, countFilled, setCountFilled, onMatrixChange, matrixOutput)
                 }
