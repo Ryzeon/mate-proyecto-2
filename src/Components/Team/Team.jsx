@@ -44,7 +44,8 @@ const Team = () => {
                 <div className="team__content-members flex-row">
 
                     {
-                        members.map((member) => <Member src={member.src} name={member.name} code={member.code} career={member.career}></Member>)
+                        members.map((member) => <Member src={member.src} name={member.name} code={member.code} career={member.career}
+                        ></Member>)
                     }
 
                 </div>

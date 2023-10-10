@@ -1,7 +1,7 @@
 import React from "react";
 import "./Member.css";
 
-const Member = ({src, name, code, career}) => {
+const Member = ({src, name, code, career, link}) => {
     return(
         <div className="member__content">
             <img src={src} className="member__content-img"></img>

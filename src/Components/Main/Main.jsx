@@ -1,10 +1,13 @@
 import {React, useEffect, useState} from "react";
+
 import Header from "../Header/Header";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import Matrix from "../Matrix/Matrix";
 import {Graph} from "../Graph/Graph";
+
 import FutureCallback from "../../validations/callback";
+import Nav from "../Nav/Nav";
 
 const Main = () => {
     const [mssgHeader, setMssg] = useState('Selecciona una opción');
@@ -51,6 +54,7 @@ const Main = () => {
 
     return (
         <>
+            <Nav></Nav>
         
             <Header mssgHeader={mssgHeader} btnSelected={btnSelected} setSelected={setSelected} active={active}/>
 
