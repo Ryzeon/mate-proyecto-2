@@ -1,0 +1,23 @@
+.dijkstra{
+    display: flex;
+    justify-content: center;
+}
+
+.dijkstra__content {
+    text-align: center;
+}
+
+#input_dijkstra {
+    width: 20%;
+    margin-top: 1rem;
+}
+
+.input_number::placeholder{
+    color: #fff;
+}
+
+.inputs {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}

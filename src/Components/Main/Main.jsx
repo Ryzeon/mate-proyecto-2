@@ -8,6 +8,7 @@ import {Graph} from "../Graph/Graph";
 
 import FutureCallback from "../../validations/callback";
 import Nav from "../Nav/Nav";
+import Dijkstra from "../Dijkstra/Dijkstra";
 
 const Main = () => {
     const [mssgHeader, setMssg] = useState('Selecciona una opción');
@@ -19,12 +20,15 @@ const Main = () => {
     const [generate, setGenerateMatrix] = useState(0); // 0:nada, 1:random, 2:input
     const [matrix, setMatrix] = useState(false); // true: matriz random, false: matriz input
     const [out_matriz, setOut_matriz] = useState([]);
+    const [btn_calculate, setBtnCalculate] = useState(false);
 
     const futureCallback = new FutureCallback();
 
     document.addEventListener('matrixChange', (e) => {
         // if last call was in more than 200 milliseconds ago return
         futureCallback.handle(e.detail.matrix);
+        console.log('yesiga');
+        setBtnCalculate(true);
     });
 
     useEffect(() => {
@@ -46,6 +50,11 @@ const Main = () => {
 
         if (btnSelected === 'Generar') {
             (matrix) ? setGenerateMatrix(1) : setGenerateMatrix(2);
+        }
+
+        if (btnSelected === 'Calcular distancia minima') {
+            console.log('YESI PINKMEN AQUI EL BREBAJE');
+            
         }
 
     }, [btnSelected, matrix]);
@@ -85,6 +94,9 @@ const Main = () => {
             }
             {
                 ((generate === 1 || generate === 2) && numberValid) && <Graph size={n} matrix={out_matriz} FutureCallback={futureCallback}/>
+            }
+            {
+                (btn_calculate && numberValid) && <Dijkstra n={n} setSelected={setSelected}/>
             }
 
         </>
