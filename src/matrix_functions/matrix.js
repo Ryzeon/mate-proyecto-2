@@ -43,6 +43,22 @@ export const dijkstra_min = (matrix, n, src, target) => {
     }
 };
 
+export const dijkstra_paths_= (matrix, n, src, target) => {
+    let dist = dijkstra(matrix, n, src);
+    let path = [target];
+    let current = target;
+    while (current !== src) {
+        for (let i = 0; i < n; ++i) {
+            if (matrix[current][i] !== 0 && dist[current] - matrix[current][i] === dist[i]) {
+                path.push(i);
+                current = i;
+                break;
+            }
+        }
+    }
+    return path.reverse();
+};
+
 export const dijkstra = (matrix, n, src) => {
     const dist = Array(n).fill(Infinity);
     const visited = Array(n).fill(false);
