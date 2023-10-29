@@ -111,7 +111,7 @@ const Matrix = ({n, random, matrixOutput}) => {
                 <div className="matrix__error">
                     <p>La matriz ingresada no es simétrica</p>
                     {
-                        document.querySealectorAll('.cell_input').forEach(input => input.style.border = '1px solid var(--error-color)')
+                        document.querySelectorAll('.cell_input').forEach(input => input.style.border = '1px solid var(--error-color)')
                     }
                 </div>
             }
