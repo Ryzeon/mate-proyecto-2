@@ -57,7 +57,7 @@ const Main = () => {
         }
 
         if (btnSelected === 'Calcular distancia minima') {
-            console.log("Calculando distancia minima")
+            console.log("Calculando distancia minima --main")
             handle_dijkstra.handle(dijkstraSrc, dijkstraDst, out_matriz);
         }
 

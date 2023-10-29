@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {Component, useEffect, useState} from "react";
 import {generateRandom, matrixInput} from "../../matrix_functions/matrix";
 import './Matrix.css';
 import {validateMatrix, validateNumber} from "../../validations/input";
@@ -14,6 +14,7 @@ const cellCompleted = (matrix_input, setMatrixInput, countFilled, setCountFilled
             setCountFilled(countFilled + 1);
             newMatrix[parseInt(input.id[0])][parseInt(input.id[1])] = parseInt(input.value);
         }
+        console.log('newmatrix: ', newMatrix)
         setMatrixInput(newMatrix);
         SetMatrixOutput(newMatrix);
         if (validateMatrix(newMatrix.length, newMatrix)) {
@@ -48,6 +49,7 @@ function generateCells(n, random, matrix_rand, matrix_input, setMatrixInput, cou
                         onChange={handleCell}
                     />
             );
+
         }
         matrix_front.push(<div key={i} className="flex-row">{row}</div>);
     }
@@ -67,11 +69,13 @@ const Matrix = ({n, random, matrixOutput}) => {
 
     const [countFilled, setCountFilled] = useState(0);
     const [matrix_input, setMatrixInput] = useState(matrixInput(n));
-    const matrix_rand = generateRandom(n);
+    const [matrix_rand, setMatrixRand] = useState(generateRandom(n));
+    //matrixOutput(matrix_rand);
+
+    
 
     useEffect(() => {
         if (random) {
-            console.log("matrixChange event dispatched");
             onMatrixChange(matrix_rand);
         }
     });
@@ -82,7 +86,6 @@ const Matrix = ({n, random, matrixOutput}) => {
                 matrix: matrix
             }
         });
-        console.log("matrixChange event dispatched");
         document.dispatchEvent(event);
     }
 
@@ -91,6 +94,12 @@ const Matrix = ({n, random, matrixOutput}) => {
         console.log(matrix_input);
         onMatrixChange(matrix_input)
     }, [countFilled, matrix_input]);
+
+    useEffect(() => {
+        if (random) {
+            matrixOutput(matrix_rand);
+        }
+    },[]);
 
     return (
         <div className="matrix_container">

@@ -18,13 +18,13 @@ const Team = () => {
             career: "Ingeniería de Software"
         },
         {
-            src: "https://avatars.githubusercontent.com/u/55036994?v=4",
+            src: "https://avatars.githubusercontent.com/u/129230632?v=4",
             name: "Sebastian Ramirez",
             code: "U202211894",
             career: "Ingeniería de Software"
         },
         {
-            src: "https://avatars.githubusercontent.com/u/55036994?v=4",
+            src: "https://avatars.githubusercontent.com/u/101916946?v=4",
             name: "Nicolas Esteban",
             code: "U202217485",
             career: "Ingeniería de Software"

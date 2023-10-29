@@ -21,3 +21,12 @@
     justify-content: center;
     gap: 2rem;
 }
+
+.dijkstra__result {
+    padding-top: 2rem;
+}
+
+.dijkstra__result span{
+    color: var(--error-color);
+    font-weight: bold;
+}

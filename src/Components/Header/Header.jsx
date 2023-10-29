@@ -18,7 +18,7 @@ const Header = ({mssgHeader, btnSelected, setSelected, active}) => { // El compo
             <div className='header__container'>
                 <div className='header__content'>
                     <div>
-                        <h1>Generador de matrices simétricas</h1>
+                        <h1>Generador de matrices NO simétricas</h1>
                         <p>{mssgHeader}</p>
                     </div>
                 </div>
