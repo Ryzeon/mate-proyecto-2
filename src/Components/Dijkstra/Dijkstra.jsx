@@ -28,7 +28,7 @@ const Dijkstra = ({n, setSelected, setDijkstraSrc, setDijkstraDst, handlejistrac
     const [path_min, setPathMin] = useState([]);
 
     handlejistrackCB.onSuccess((dijkstraSrc, dijkstraDst, out_matriz) => {
-        dijkstra(out_matriz, dijkstraSrc-1, dijkstraDst-1, setDistanceMin, setPathMin);
+        dijkstra(out_matriz, dijkstraDst-1, dijkstraSrc-1, setDistanceMin, setPathMin);
     });
 
     return (
@@ -45,7 +45,7 @@ const Dijkstra = ({n, setSelected, setDijkstraSrc, setDijkstraDst, handlejistrac
                 </div>
 
                 <div className="dijkstra__result">
-                    <p>Distancia minima calculada EL BREBAJE: </p> <span>{distance_min}</span>
+                    <p>Distancia minima calculada: </p> <span>{distance_min}</span>
                     <p>Camino minimo: </p> <span>{path_min.map((e) => e+1).join(' -> ')}</span>
                 </div>
 
