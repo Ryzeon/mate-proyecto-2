@@ -45,7 +45,7 @@ const Dijkstra = ({n, setSelected, setDijkstraSrc, setDijkstraDst, handlejistrac
                 </div>
 
                 <div className="dijkstra__result">
-                    <p>Distancia minima calculada EL BREBAJE: </p> <span>{distance_min}</span>
+                    <p>Distancia minima calculada: </p> <span>{distance_min}</span>
                     <p>Camino minimo: </p> <span>{path_min.map((e) => e+1).join(' -> ')}</span>
                 </div>
 
