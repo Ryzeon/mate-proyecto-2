@@ -4,7 +4,7 @@ import "./Member.css";
 const Member = ({src, name, code, career, link}) => {
     return(
         <div className="member__content">
-            <img src={src} className="member__content-img"></img>
+            <img src={src} className="member__content-img" alt={name + "_" + code}></img>
             <h2>{name}</h2>
             <div className="member__content-info">
                 <p>{code}</p>

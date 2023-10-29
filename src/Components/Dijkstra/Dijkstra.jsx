@@ -3,7 +3,7 @@ import Button from "../Button/Button";
 import './Dijkstra.css';
 import '../Input/Input.css'
 
-const Dijkstra = ({n, setSelected}) => {
+const Dijkstra = ({n, setSelected, setDijkstraSrc, setDijkstraDst}) => {
     let allright = Array(2).fill(false);
     const isNumberValid = () => {
         const inputs = document.querySelectorAll('.input_number');
@@ -12,6 +12,13 @@ const Dijkstra = ({n, setSelected}) => {
             if (value >= 1 && value <= n) {
                 input.classList.remove('input_error');
                 allright[i] = true;
+                console.log("Valor " + i + " correcto");
+                console.log(allright);
+                if (i === 1) {
+                    setDijkstraSrc(value);
+                } else {
+                    setDijkstraDst(value);
+                }
             } else {
                 input.classList.add('input_error');
             }

@@ -21,8 +21,12 @@ const Main = () => {
     const [matrix, setMatrix] = useState(false); // true: matriz random, false: matriz input
     const [out_matriz, setOut_matriz] = useState([]);
     const [btn_calculate, setBtnCalculate] = useState(false);
+    const [dijkstraSrc, setDijkstraSrc] = useState(0);
+    const [dijkstraDst, setDijkstraDst] = useState(0);
+
 
     const futureCallback = new FutureCallback();
+    const handle_dijkstra = new FutureCallback();
 
     document.addEventListener('matrixChange', (e) => {
         // if last call was in more than 200 milliseconds ago return
@@ -53,11 +57,11 @@ const Main = () => {
         }
 
         if (btnSelected === 'Calcular distancia minima') {
-            console.log('YESI PINKMEN AQUI EL BREBAJE');
-            
+            console.log("Calculando distancia minima")
+            handle_dijkstra.handle(dijkstraSrc, dijkstraDst, out_matriz);
         }
 
-    }, [btnSelected, matrix]);
+    }, [btnSelected, dijkstraDst, dijkstraSrc, matrix]);
 
 
 
@@ -96,7 +100,7 @@ const Main = () => {
                 ((generate === 1 || generate === 2) && numberValid) && <Graph size={n} matrix={out_matriz} FutureCallback={futureCallback}/>
             }
             {
-                (btn_calculate && numberValid) && <Dijkstra n={n} setSelected={setSelected}/>
+                (btn_calculate && numberValid) && <Dijkstra n={n} setSelected={setSelected} setDijkstraDst={setDijkstraDst} setDijkstraSrc={setDijkstraSrc}  />
             }
 
         </>
