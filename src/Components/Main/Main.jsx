@@ -53,6 +53,7 @@ const Main = () => {
 
         if (btnSelected === 'Generar') {
             (matrix) ? setGenerateMatrix(1) : setGenerateMatrix(2);
+            setInputActive(false);
         }
 
         if (btnSelected === 'Calcular distancia minima') {

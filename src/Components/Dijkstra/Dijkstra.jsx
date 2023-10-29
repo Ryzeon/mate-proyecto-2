@@ -28,7 +28,7 @@ const Dijkstra = ({n, setSelected, setDijkstraSrc, setDijkstraDst, handlejistrac
     const [path_min, setPathMin] = useState([]);
 
     handlejistrackCB.onSuccess((dijkstraSrc, dijkstraDst, out_matriz) => {
-        dijkstra(out_matriz, dijkstraSrc-1, dijkstraDst-1, setDistanceMin, setPathMin);
+        dijkstra(out_matriz, dijkstraDst-1, dijkstraSrc-1, setDistanceMin, setPathMin);
     });
 
     return (

@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {generateRandom, matrixInput} from "../../matrix_functions/matrix";
 import './Matrix.css';
 import {validateMatrix, validateNumber} from "../../validations/input";
@@ -32,7 +32,7 @@ function generateCells(n, random, matrix_rand, matrix_input, setMatrixInput, cou
     for (let i = 0; i < n; ++i) {
         const row = [];
         for (let j = 0; j < n; ++j) {
-            if(j==0) row.push(<p key={j} style={{paddingRight: '1rem'}}>{i+1}</p>);
+            if(j===0) row.push(<p key={j} style={{paddingRight: '1rem'}}>{i+1}</p>);
             row.push(
                 (random) ?
                     <div key={j} className="cell">{matrix_rand[i][j]}</div>
@@ -111,7 +111,7 @@ const Matrix = ({n, random, matrixOutput}) => {
                 <div className="matrix__error">
                     <p>La matriz ingresada no es simétrica</p>
                     {
-                        document.querySelectorAll('.cell_input').forEach(input => input.style.border = '1px solid var(--error-color)')
+                        document.querySealectorAll('.cell_input').forEach(input => input.style.border = '1px solid var(--error-color)')
                     }
                 </div>
             }
