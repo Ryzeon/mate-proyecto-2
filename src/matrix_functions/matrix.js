@@ -33,7 +33,7 @@ export const matrixInput = (n) => {
     return matrix
 }
 
-export const dijkstra = (matrix, start, end, setDistanceMin, setPathMin) => {
+export const dijkstra = (matrix, start, end, setDistanceMin, setPathMin, handlegraph_dj) => {
     console.log("-");
     console.log('matrix: ', matrix)
     console.log('cantidad de nodos: ', matrix.length)
@@ -74,6 +74,7 @@ export const dijkstra = (matrix, start, end, setDistanceMin, setPathMin) => {
     console.log('distances: ', distances);
     setDistanceMin(distances[end]);
     setPathMin(path);
+    handlegraph_dj.handle(path);
 }
 
 function findMinDistanceNode(distances, visited) {
