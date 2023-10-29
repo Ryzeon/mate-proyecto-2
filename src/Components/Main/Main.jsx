@@ -27,6 +27,7 @@ const Main = () => {
 
     const futureCallback = new FutureCallback();
     const handle_dijkstra = new FutureCallback();
+    const handle_path_dijstra = new FutureCallback();
 
     document.addEventListener('matrixChange', (e) => {
         // if last call was in more than 200 milliseconds ago return
@@ -64,11 +65,10 @@ const Main = () => {
     }, [btnSelected, dijkstraDst, dijkstraSrc, matrix]);
 
 
-
     return (
         <>
             <Nav></Nav>
-        
+
             <Header mssgHeader={mssgHeader} btnSelected={btnSelected} setSelected={setSelected} active={active}/>
 
             {
@@ -77,7 +77,7 @@ const Main = () => {
                         <div className="flex-row flex-column input__container">
                             <Input setN={setN} numberValid={numberValid} setNumberValid={setNumberValid}></Input>
                         </div>
-                        
+
                         <div style={{width: 'max-content', margin: '0 auto'}}>
                             <Button
                                 mssg="Generar"
@@ -93,16 +93,21 @@ const Main = () => {
 
 
             {
-                ((generate === 1 || generate === 2) && numberValid) && <Matrix n={n} random={matrix} matrixOutput={setOut_matriz}/>
+                ((generate === 1 || generate === 2) && numberValid) &&
+                <Matrix n={n} random={matrix} matrixOutput={setOut_matriz}/>
 
             }
             {
-                ((generate === 1 || generate === 2) && numberValid) && <Graph size={n} matrix={out_matriz} FutureCallback={futureCallback} handlejistrackCB={handle_dijkstra}/>
+                ((generate === 1 || generate === 2) && numberValid) &&
+                <Graph size={n} matrix={out_matriz} FutureCallback={futureCallback}
+                       handlejistrackCB={handle_path_dijstra}/>
+
             }
             {
-                (btn_calculate && numberValid) && <Dijkstra n={n} setSelected={setSelected} setDijkstraDst={setDijkstraDst} setDijkstraSrc={setDijkstraSrc} handlejistrackCB={handle_dijkstra}  />
-            }
-
+                (btn_calculate && numberValid) &&
+                <Dijkstra n={n} setSelected={setSelected} setDijkstraDst={setDijkstraDst}
+                          setDijkstraSrc={setDijkstraSrc} handlejistrackCB={handle_dijkstra}
+                          handlegraph_dj={handle_path_dijstra}/>}
         </>
     );
 }

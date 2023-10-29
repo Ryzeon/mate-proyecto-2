@@ -4,7 +4,7 @@ import './Dijkstra.css';
 import '../Input/Input.css'
 import {dijkstra } from "../../matrix_functions/matrix";
 
-const Dijkstra = ({n, setSelected, setDijkstraSrc, setDijkstraDst, handlejistrackCB }) => {
+const Dijkstra = ({n, setSelected, setDijkstraSrc, setDijkstraDst, handlejistrackCB, handlegraph_dj}) => {
     let allright = Array(2).fill(false);
     const isNumberValid = () => {
         const inputs = document.querySelectorAll('.input_number');
@@ -28,7 +28,7 @@ const Dijkstra = ({n, setSelected, setDijkstraSrc, setDijkstraDst, handlejistrac
     const [path_min, setPathMin] = useState([]);
 
     handlejistrackCB.onSuccess((dijkstraSrc, dijkstraDst, out_matriz) => {
-        dijkstra(out_matriz, dijkstraDst-1, dijkstraSrc-1, setDistanceMin, setPathMin);
+        dijkstra(out_matriz, dijkstraDst-1, dijkstraSrc-1, setDistanceMin, setPathMin, handlegraph_dj);
     });
 
     return (

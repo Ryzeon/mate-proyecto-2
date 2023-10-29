@@ -37,7 +37,7 @@ const createInitialNodes = (matriz, size) => {
     //console.log(nodes);
     return nodes;
 }
-const createEdges = (matriz, size) => {
+const createEdges = (matriz, size, colored_egdes=[]) => {
 //     Si no es 0, entonces hay una arista y se pone en label el valor el cual es la distancia
     const edges = [];
     const alreadyConnected = [];
@@ -48,6 +48,20 @@ const createEdges = (matriz, size) => {
                 continue;
             }
             if (matriz[i][j] !== 0) {
+                if (colored_egdes.includes(i + "-" + j) || colored_egdes.includes(j + "-" + i)) {
+                    console.log("colored");
+                    edges.push({
+                        id: i + "-" + j,
+                        source: i.toString(),
+                        target: j.toString(),
+                        label: matriz[i][j].toString() + "m",
+                        animated: true,
+                        zIndex: 1,
+                        style: {stroke: 'red'}
+                    });
+                    alreadyConnected.push(i + "-" + j);
+                    continue;
+                }
                 edges.push({
                     id: i + "-" + j,
                     source: i.toString(),
@@ -138,7 +152,21 @@ export const Graph = ({matrix, size, FutureCallback, handlejistrackCB}) => {
         }
     });
 
-    handlejistrackCB.onSuccess((dijkstraSrc, dijkstraDst, out_matriz) => {
+    handlejistrackCB.onSuccess((path) => {
+        console.log("ola from graph");
+        console.log(path);
+        const connections = [];
+        for (let i = 0; i < path.length - 1; ++i) {
+            connections.push(path[i] + "-" + path[i + 1]);
+        }
+        console.log(connections);
+        const newMatrix = matrix;
+        const newSize = newMatrix.length;
+        const newNodes = createInitialNodes(newMatrix, newSize);
+        const newEdges = createEdges(newMatrix, newSize, connections);
+        let layoutedElements = getLayoutedElements(newNodes, newEdges);
+        setNodes(layoutedElements.nodes);
+        setEdges(layoutedElements.edges);
     });
 
     return (
