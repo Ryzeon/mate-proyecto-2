@@ -13,12 +13,9 @@ const Dijkstra = ({n, setSelected, setDijkstraSrc, setDijkstraDst, handlejistrac
             if (value >= 1 && value <= n) {
                 input.classList.remove('input_error');
                 allright[i] = true;
-                console.log("Valor " + i + " correcto");
                 if (i === 1) {
-                    console.log(value);
                     setDijkstraSrc(value);
                 } else {
-                    console.log(value);
                     setDijkstraDst(value);
                 }
             } else {
@@ -31,8 +28,6 @@ const Dijkstra = ({n, setSelected, setDijkstraSrc, setDijkstraDst, handlejistrac
     const [path_min, setPathMin] = useState([]);
 
     handlejistrackCB.onSuccess((dijkstraSrc, dijkstraDst, out_matriz) => {
-        console.log(dijkstraSrc, dijkstraDst, out_matriz)
-        console.log('handlejistrackCB onSuccess')
         dijkstra(out_matriz, dijkstraSrc-1, dijkstraDst-1, setDistanceMin, setPathMin);
     });
 
@@ -48,7 +43,7 @@ const Dijkstra = ({n, setSelected, setDijkstraSrc, setDijkstraDst, handlejistrac
                     <input type="number" name="destino" className="input_number" id="input_dijkstra" min="0" onChange={isNumberValid}
                     placeholder="Vértice destino"></input>
                 </div>
-                
+
                 <div className="dijkstra__result">
                     <p>Distancia minima calculada EL BREBAJE: </p> <span>{distance_min}</span>
                     <p>Camino minimo: </p> <span>{path_min.map((e) => e+1).join(' -> ')}</span>

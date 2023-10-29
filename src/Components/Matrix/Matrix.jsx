@@ -14,7 +14,6 @@ const cellCompleted = (matrix_input, setMatrixInput, countFilled, setCountFilled
             setCountFilled(countFilled + 1);
             newMatrix[parseInt(input.id[0])][parseInt(input.id[1])] = parseInt(input.value);
         }
-        console.log('newmatrix: ', newMatrix)
         setMatrixInput(newMatrix);
         SetMatrixOutput(newMatrix);
         if (validateMatrix(newMatrix.length, newMatrix)) {
@@ -30,8 +29,6 @@ function generateCells(n, random, matrix_rand, matrix_input, setMatrixInput, cou
     }
 
     const matrix_front = [];
-
-
     for (let i = 0; i < n; ++i) {
         const row = [];
         for (let j = 0; j < n; ++j) {
@@ -70,9 +67,6 @@ const Matrix = ({n, random, matrixOutput}) => {
     const [countFilled, setCountFilled] = useState(0);
     const [matrix_input, setMatrixInput] = useState(matrixInput(n));
     const [matrix_rand, setMatrixRand] = useState(generateRandom(n));
-    //matrixOutput(matrix_rand);
-
-    
 
     useEffect(() => {
         if (random) {
@@ -90,8 +84,6 @@ const Matrix = ({n, random, matrixOutput}) => {
     }
 
     useEffect(() => {
-        console.log(countFilled);
-        console.log(matrix_input);
         onMatrixChange(matrix_input)
     }, [countFilled, matrix_input]);
 

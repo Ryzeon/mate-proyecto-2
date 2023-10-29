@@ -31,7 +31,6 @@ const Main = () => {
     document.addEventListener('matrixChange', (e) => {
         // if last call was in more than 200 milliseconds ago return
         futureCallback.handle(e.detail.matrix);
-        console.log('yesiga');
         setBtnCalculate(true);
     });
 
@@ -57,7 +56,7 @@ const Main = () => {
         }
 
         if (btnSelected === 'Calcular distancia minima') {
-            console.log("Calculando distancia minima --main")
+            console.log(out_matriz)
             handle_dijkstra.handle(dijkstraSrc, dijkstraDst, out_matriz);
         }
 

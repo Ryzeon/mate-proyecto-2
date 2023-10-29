@@ -30,7 +30,7 @@ const Team = () => {
             career: "Ingeniería de Software"
         },
         {
-            src: "https://avatars.githubusercontent.com/u/55036994?v=4",
+            src: "https://avatars.githubusercontent.com/u/132310213?v=4",
             name: "Diego Gutierrez",
             code: "U202217814",
             career: "Ingeniería de Sistemas"

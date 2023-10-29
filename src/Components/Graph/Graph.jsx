@@ -124,10 +124,8 @@ export const Graph = ({matrix, size, FutureCallback, handlejistrackCB}) => {
         if (lastCalledTimeLong && ((lastCalledTimeLong + 200) > Date.now())) {
             return;
         }
-        console.log("matrixChange event received");
         try {
             const newMatrix = matrix;
-            console.log(newMatrix.length);
             const newSize = newMatrix.length;
             const newNodes = createInitialNodes(newMatrix, newSize);
             const newEdges = createEdges(newMatrix, newSize);
