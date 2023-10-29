@@ -105,7 +105,7 @@ const initialNodes = [];
 const initialEdges = [];
 
 
-export const Graph = ({matrix, size, FutureCallback}) => {
+export const Graph = ({matrix, size, FutureCallback, handlejistrackCB}) => {
     const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
     const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
@@ -139,6 +139,10 @@ export const Graph = ({matrix, size, FutureCallback}) => {
             console.log(e);
         }
     });
+
+    handlejistrackCB.onSuccess((dijkstraSrc, dijkstraDst, out_matriz) => {
+    });
+
     return (
         <section className="graph_container">
             <div className="graph_container__content">

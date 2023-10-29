@@ -4,9 +4,9 @@ class FutureCallback {
         this._callback = null;
     }
 
-    handle(value) {
+    handle(...values) {
         if(this._callback) {
-            this._callback(value);
+            this._callback(...values);
         }
     }
 

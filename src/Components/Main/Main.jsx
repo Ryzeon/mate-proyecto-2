@@ -97,10 +97,10 @@ const Main = () => {
 
             }
             {
-                ((generate === 1 || generate === 2) && numberValid) && <Graph size={n} matrix={out_matriz} FutureCallback={futureCallback}/>
+                ((generate === 1 || generate === 2) && numberValid) && <Graph size={n} matrix={out_matriz} FutureCallback={futureCallback} handlejistrackCB={handle_dijkstra}/>
             }
             {
-                (btn_calculate && numberValid) && <Dijkstra n={n} setSelected={setSelected} setDijkstraDst={setDijkstraDst} setDijkstraSrc={setDijkstraSrc}  />
+                (btn_calculate && numberValid) && <Dijkstra n={n} setSelected={setSelected} setDijkstraDst={setDijkstraDst} setDijkstraSrc={setDijkstraSrc} handlejistrackCB={handle_dijkstra}  />
             }
 
         </>

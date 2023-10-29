@@ -33,35 +33,10 @@ export const matrixInput = (n) => {
     return matrix
 }
 
-export const dijkstra_min = (matrix, n, src, target) => {
-    const dist = dijkstra(matrix, n, src);
-
-    if (dist[target] !== Infinity) {
-        return dist[target];
-    } else {
-        return -1;
-    }
-};
-
-export const dijkstra_paths_= (matrix, n, src, target) => {
-    let dist = dijkstra(matrix, n, src);
-    let path = [target];
-    let current = target;
-    while (current !== src) {
-        for (let i = 0; i < n; ++i) {
-            if (matrix[current][i] !== 0 && dist[current] - matrix[current][i] === dist[i]) {
-                path.push(i);
-                current = i;
-                break;
-            }
-        }
-    }
-    return path.reverse();
-};
-
-export const dijkstra = (matrix, n, src) => {
+export const dijkstraWithPath = (matrix, n, src, dest) => {
     const dist = Array(n).fill(Infinity);
     const visited = Array(n).fill(false);
+    const parents = Array(n).fill(-1);
 
     dist[src] = 0;
 
@@ -70,13 +45,16 @@ export const dijkstra = (matrix, n, src) => {
         visited[u] = true;
 
         for (let v = 0; v < n; ++v) {
-            if (!visited[v] && matrix[u][v] !== 0) {
-                dist[v] = Math.min(dist[v], dist[u] + matrix[u][v]);
+            if (!visited[v] && matrix[u][v] !== 0 && dist[u] + matrix[u][v] < dist[v]) {
+                dist[v] = dist[u] + matrix[u][v];
+                parents[v] = u;
             }
         }
     }
 
-    return dist;
+    const path = reconstructPath(parents, src, dest);
+    
+    return { distance: dist[dest], path };
 };
 
 const findMinDistVertex = (dist, visited) => {
@@ -92,3 +70,78 @@ const findMinDistVertex = (dist, visited) => {
 
     return minIndex;
 };
+
+const reconstructPath = (parents, src, dest) => {
+    const path = [];
+    let at = dest;
+    while (at !== -1) {
+        path.unshift(at);
+        at = parents[at];
+    }
+    if (path[0] === src) {
+        return path;
+    }
+    return [];
+};
+
+
+
+// export const dijkstra_min = (matrix, n, src, target) => {
+//     const dist = dijkstra(matrix, n, src);
+
+//     if (dist[target] !== Infinity) {
+//         return dist[target];
+//     } else {
+//         return -1;
+//     }
+// };
+
+// export const dijkstra_paths_= (matrix, n, src, target) => {
+//     let dist = dijkstra(matrix, n, src);
+//     let path = [target];
+//     let current = target;
+//     while (current !== src) {
+//         for (let i = 0; i < n; ++i) {
+//             if (matrix[current][i] !== 0 && dist[current] - matrix[current][i] === dist[i]) {
+//                 path.push(i);
+//                 current = i;
+//                 break;
+//             }
+//         }
+//     }
+//     return path.reverse();
+// };
+
+// export const dijkstra = (matrix, n, src) => {
+//     const dist = Array(n).fill(Infinity);
+//     const visited = Array(n).fill(false);
+
+//     dist[src] = 0;
+
+//     for (let i = 0; i < n; ++i) {
+//         const u = findMinDistVertex(dist, visited);
+//         visited[u] = true;
+
+//         for (let v = 0; v < n; ++v) {
+//             if (!visited[v] && matrix[u][v] !== 0) {
+//                 dist[v] = Math.min(dist[v], dist[u] + matrix[u][v]);
+//             }
+//         }
+//     }
+
+//     return dist;
+// };
+
+// const findMinDistVertex = (dist, visited) => {
+//     let minDist = Infinity;
+//     let minIndex = -1;
+
+//     for (let i = 0; i < dist.length; ++i) {
+//         if (!visited[i] && dist[i] < minDist) {
+//             minDist = dist[i];
+//             minIndex = i;
+//         }
+//     }
+
+//     return minIndex;
+// };

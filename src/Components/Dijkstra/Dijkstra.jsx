@@ -2,8 +2,9 @@ import React from "react";
 import Button from "../Button/Button";
 import './Dijkstra.css';
 import '../Input/Input.css'
+import {dijkstraWithPath} from "../../matrix_functions/matrix";
 
-const Dijkstra = ({n, setSelected, setDijkstraSrc, setDijkstraDst}) => {
+const Dijkstra = ({n, setSelected, setDijkstraSrc, setDijkstraDst, handlejistrackCB }) => {
     let allright = Array(2).fill(false);
     const isNumberValid = () => {
         const inputs = document.querySelectorAll('.input_number');
@@ -25,7 +26,11 @@ const Dijkstra = ({n, setSelected, setDijkstraSrc, setDijkstraDst}) => {
         })
     }
 
-
+    handlejistrackCB.onSuccess((dijkstraSrc, dijkstraDst, out_matriz) => {
+        var paths, min = dijkstraWithPath(out_matriz, out_matriz.length ,dijkstraSrc, dijkstraDst);
+        console.log("Minimo: " + min);
+        console.log("Camino: " + paths);
+    });
 
     return (
         <div className="dijkstra">
